@@ -1,11 +1,11 @@
 <?php
 
-namespace WernerDweight\Dobee\Generator;
+namespace AiraGroupSro\Dobee\Generator;
 
-use WernerDweight\Dobee\Exception\DatabaseException;
-use WernerDweight\Dobee\Generator\Comparator;
-use WernerDweight\Dobee\Transformer\Transformer;
-use WernerDweight\Dobee\Traits\ModelHelper;
+use AiraGroupSro\Dobee\Exception\DatabaseException;
+use AiraGroupSro\Dobee\Generator\Comparator;
+use AiraGroupSro\Dobee\Transformer\Transformer;
+use AiraGroupSro\Dobee\Traits\ModelHelper;
 
 class Generator {
 

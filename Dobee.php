@@ -1,14 +1,14 @@
 <?php
 
-namespace WernerDweight\Dobee;
+namespace AiraGroupSro\Dobee;
 
 use Symfony\Component\Yaml\Yaml;
 
-use WernerDweight\Dobee\Exception\ConnectionException;
-use WernerDweight\Dobee\Exception\InvalidConfigurationException;
-use WernerDweight\Dobee\Exception\InvalidModelConfigurationException;
-use WernerDweight\Dobee\Generator\Generator;
-use WernerDweight\Dobee\Provider\Provider;
+use AiraGroupSro\Dobee\Exception\ConnectionException;
+use AiraGroupSro\Dobee\Exception\InvalidConfigurationException;
+use AiraGroupSro\Dobee\Exception\InvalidModelConfigurationException;
+use AiraGroupSro\Dobee\Generator\Generator;
+use AiraGroupSro\Dobee\Provider\Provider;
 
 class Dobee {
 

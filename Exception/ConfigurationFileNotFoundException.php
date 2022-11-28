@@ -1,6 +1,6 @@
 <?php
 
-namespace WernerDweight\Dobee\Exception;
+namespace AiraGroupSro\Dobee\Exception;
 
 class ConfigurationFileNotFoundException extends \RuntimeException{
 

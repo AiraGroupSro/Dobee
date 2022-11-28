@@ -1,6 +1,6 @@
 <?php
 
-namespace WernerDweight\Dobee\Transformer;
+namespace AiraGroupSro\Dobee\Transformer;
 
 // https://gist.github.com/tbrianjones/ba0460cc1d55f357e00b
 // original source: http://kuwamoto.org/2007/12/17/improved-pluralizing-in-php-actionscript-and-ror/

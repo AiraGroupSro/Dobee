@@ -1,6 +1,6 @@
 <?php
 
-namespace WernerDweight\Dobee\Provider;
+namespace AiraGroupSro\Dobee\Provider;
 
 class Version {
 

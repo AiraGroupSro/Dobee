@@ -1,9 +1,9 @@
 <?php
 
-namespace WernerDweight\Dobee\Provider;
+namespace AiraGroupSro\Dobee\Provider;
 
-use WernerDweight\Dobee\Provider\Provider;
-use WernerDweight\Dobee\Provider\Version;
+use AiraGroupSro\Dobee\Provider\Provider;
+use AiraGroupSro\Dobee\Provider\Version;
 
 class Changelog {
 

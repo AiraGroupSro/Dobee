@@ -1,8 +1,8 @@
 <?php
 
-namespace WernerDweight\Dobee\Transformer;
+namespace AiraGroupSro\Dobee\Transformer;
 
-use WernerDweight\Dobee\Transformer\Inflect;
+use AiraGroupSro\Dobee\Transformer\Inflect;
 
 class Transformer {
 

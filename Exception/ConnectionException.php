@@ -1,8 +1,8 @@
 <?php
 
-namespace WernerDweight\Dobee\Exception;
+namespace AiraGroupSro\Dobee\Exception;
 
-class ConnectionFoundException extends \RuntimeException{
+class ConnectionException extends \RuntimeException{
 
 	public function __construct($message = null,$code = null,\Exception $previous = null){
 		if(is_null($message)){

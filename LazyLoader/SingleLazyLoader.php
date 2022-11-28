@@ -1,8 +1,8 @@
 <?php
 
-namespace WernerDweight\Dobee\LazyLoader;
+namespace AiraGroupSro\Dobee\LazyLoader;
 
-use WernerDweight\Dobee\Provider\Provider;
+use AiraGroupSro\Dobee\Provider\Provider;
 
 class SingleLazyLoader {
 

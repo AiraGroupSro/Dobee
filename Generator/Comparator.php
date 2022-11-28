@@ -1,8 +1,8 @@
 <?php
 
-namespace WernerDweight\Dobee\Generator;
+namespace AiraGroupSro\Dobee\Generator;
 
-use WernerDweight\Dobee\Exception\DatabaseException;
+use AiraGroupSro\Dobee\Exception\DatabaseException;
 
 class Comparator {
 

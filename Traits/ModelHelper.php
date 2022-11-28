@@ -1,6 +1,6 @@
 <?php
 
-namespace WernerDweight\Dobee\Traits;
+namespace AiraGroupSro\Dobee\Traits;
 
 trait ModelHelper {
 

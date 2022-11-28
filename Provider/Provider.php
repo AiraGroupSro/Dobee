@@ -1,15 +1,15 @@
 <?php
 
-namespace WernerDweight\Dobee\Provider;
+namespace AiraGroupSro\Dobee\Provider;
 
-use WernerDweight\Dobee\Transformer\Transformer;
-use WernerDweight\Dobee\Traits\ModelHelper;
-use WernerDweight\Dobee\Exception\DatabaseException;
-use WernerDweight\Dobee\Exception\UnknownOperationException;
-use WernerDweight\Dobee\Exception\InvalidPropertyTypeException;
-use WernerDweight\Dobee\LazyLoader\SingleLazyLoader;
-use WernerDweight\Dobee\LazyLoader\MultipleLazyLoader;
-use WernerDweight\Dobee\Provider\Changelog;
+use AiraGroupSro\Dobee\Transformer\Transformer;
+use AiraGroupSro\Dobee\Traits\ModelHelper;
+use AiraGroupSro\Dobee\Exception\DatabaseException;
+use AiraGroupSro\Dobee\Exception\UnknownOperationException;
+use AiraGroupSro\Dobee\Exception\InvalidPropertyTypeException;
+use AiraGroupSro\Dobee\LazyLoader\SingleLazyLoader;
+use AiraGroupSro\Dobee\LazyLoader\MultipleLazyLoader;
+use AiraGroupSro\Dobee\Provider\Changelog;
 
 class Provider {
 
