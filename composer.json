@@ -32,8 +32,8 @@
     "suggest": {},
 
     "autoload": {
-        "psr-0": {
-            "Dobee\\": ""
+        "psr-4": {
+            "AiraGroupSro\\Dobee\\": ""
         }
     }
 }
