@@ -1,0 +1,39 @@
+{
+    "name":        "airagroupsro/dobee",
+    "type":        "library",
+    "description": "PHP utility for handling your application's model",
+    "keywords":    [
+        "php",
+        "database",
+        "model",
+        "generate database",
+        "generate model"
+    ],
+    "homepage":    "https://github.com/AiraGroupSro/Dobee",
+    "license":     "MIT",
+
+    "authors": [
+        {
+            "name": "Werner Dweight",
+            "email": "wd@wernerdweight.com"
+        },
+        {
+            "name": "Michal Kumžák",
+            "email": "michal.kumzak@aira.cz"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.6.0"
+    },
+
+    "require-dev": {},
+
+    "suggest": {},
+
+    "autoload": {
+        "psr-0": {
+            "Dobee\\": ""
+        }
+    }
+}
