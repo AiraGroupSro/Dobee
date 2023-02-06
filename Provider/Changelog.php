@@ -11,12 +11,14 @@ class Changelog {
 	protected $entityName;
 	protected $entityId;
 	protected $versions;
+	protected array $versionsByDate;
 
 	public function __construct(Provider $provider,$entityName,$entityId){
 		$this->provider = $provider;
 		$this->entityName = $entityName;
 		$this->entityId = $entityId;
 		$this->versions = null;
+		$this->versionsByDate = [];
 	}
 
 	protected function prepareBlameable($result){
@@ -33,11 +35,11 @@ class Changelog {
 		}
 		else{
 			$query = "SELECT * FROM log_storage WHERE entity_class = ? AND entity_id = ? AND id = ? LIMIT 0,1";
-			$types = ['s','s','i'];
+			$types = ['s','i','i'];
 			$params = [
-				$this->entityName,	/// entity_class
-				$this->entityId,	/// entity_id
-				$id,				/// id
+				$this->entityName,
+				(int) $this->entityId,
+				(int) $id,
 			];
 			$result = $this->provider->execute($query,$types,$params);
 
@@ -53,16 +55,16 @@ class Changelog {
 
 		if(null === $this->versions || false === is_array($this->versions)){
 			$query = "SELECT * FROM log_storage WHERE entity_class = ? AND entity_id = ? ORDER BY id DESC";
-			$types = ['s','s'];
+			$types = ['s','i'];
 			$params = [
 				$this->entityName,	/// entity_class
-				$this->entityId,	/// entity_id
+				(int) $this->entityId,	/// entity_id
 			];
 			$result = $this->provider->execute($query,$types,$params);
 
 			$this->versions = [];
 			if(is_array($result) && count($result)){
-				foreach ($result as $key => $rowData) {
+				foreach ($result as $rowData) {
 					$this->versions[$rowData['id']] = new Version($this->prepareBlameable($rowData));
 				}
 			}
@@ -71,4 +73,26 @@ class Changelog {
 		return $this->versions;
 	}
 
+
+	public function getVersionByDatetime(\DateTime $datetime)
+	{
+		$date = $datetime->format('Y-m-d H:i:s');
+
+		if (!isset($this->versionsByDate[$date])) {
+			$query = "SELECT * FROM log_storage WHERE entity_class = ? AND entity_id = ? AND logged_at = ? ORDER BY id DESC";
+			$types = ['s', 'i', 's'];
+			$params = [
+				$this->entityName,
+				(int)$this->entityId,
+				$date
+			];
+			$result = $this->provider->execute($query, $types, $params);
+
+			if (is_array($result) && count($result)) {
+				$this->versionsByDate[$date] = new Version($this->prepareBlameable(reset($result)));
+			}
+		}
+
+		return $this->versionsByDate[$date];
+	}
 }
