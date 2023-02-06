@@ -74,9 +74,9 @@ class Changelog {
 	}
 
 
-	public function getVersionByDatetime(\DateTime $datetime)
+	public function getVersionByDatetime(\DateTime $datetime): ?Version
 	{
-		$date = $datetime->format('Y-m-d H:i:s');
+		$date = $datetime->format('YmdHis');
 
 		if (!isset($this->versionsByDate[$date])) {
 			$query = "SELECT * FROM log_storage WHERE entity_class = ? AND entity_id = ? AND logged_at = ? ORDER BY id DESC";
@@ -84,7 +84,7 @@ class Changelog {
 			$params = [
 				$this->entityName,
 				(int)$this->entityId,
-				$date
+				$datetime->format('Y-m-d H:i:s')
 			];
 			$result = $this->provider->execute($query, $types, $params);
 
@@ -93,6 +93,6 @@ class Changelog {
 			}
 		}
 
-		return $this->versionsByDate[$date];
+		return $this->versionsByDate[$date] ?? null;
 	}
 }
