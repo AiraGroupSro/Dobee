@@ -110,7 +110,11 @@ class Provider {
 			else{
 				$where .= " AND";
 			}
-			$where .= " this.`deleted` = 0";
+			if ($options['showDeleted'] ?? false) {
+				$where .= " this.`deleted` = 1";
+			} else {
+				$where .= " this.`deleted` = 0";
+			}
 		}
 
 		/// order
