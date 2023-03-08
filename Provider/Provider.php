@@ -139,12 +139,13 @@ class Provider {
 		return $results;
 	}
 
-	public function save($entity){
+	public function save($entity, $log = true)
+	{
 		if(!is_null($entity->getPrimaryKey())){
-			$this->doUpdate($entity);
+			$this->doUpdate($entity, $log);
 		}
 		else{
-			$this->doInsert($entity);
+			$this->doInsert($entity, $log);
 		}
 	}
 
@@ -239,7 +240,8 @@ class Provider {
 		return $versionData;
 	}
 
-	protected function log($actionType,$entity){
+	protected function log($actionType,$entity): bool
+	{
 		$entityName = $this->getEntityName($entity);
 		if(true === $this->isEntityLoggable($entityName)){
 			$entityId = $this->resolveValue($entityName,$this->getPrimaryKeyForEntity($entityName),$entity->getPrimaryKey());
@@ -280,7 +282,8 @@ class Provider {
 		return false;
 	}
 
-	protected function doUpdate($entity){
+	protected function doUpdate($entity, $log = true)
+	{
 		$types = array();
 		$params = array();
 
@@ -299,10 +302,13 @@ class Provider {
 		$this->saveManyToManyRelations($entity,$entityName);
 
 		/// log action
-		$this->log('update',$entity);
+		if ($log) {
+			$this->log('update', $entity);
+		}
 	}
 
-	protected function doInsert($entity){
+	protected function doInsert($entity, $log = true)
+	{
 		$types = array();
 		$params = array();
 
@@ -319,10 +325,13 @@ class Provider {
 		$this->saveManyToManyRelations($entity,$entityName);
 
 		/// log action
-		$this->log('create',$entity);
+		if ($log) {
+			$this->log('create', $entity);
+		}
 	}
 
-	protected function doDelete($entity){
+	protected function doDelete($entity)
+	{
 		$types = array();
 		$params = array();
 
