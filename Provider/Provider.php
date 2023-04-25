@@ -437,7 +437,8 @@ class Provider {
 					}
 					/// get relations as set during business logic operation
 					$notPersistedRelations = array();
-					if(count($entity->{'getSlave'.ucfirst(Transformer::pluralize($relatedEntity))}())){
+					$slave = $entity->{'getSlave'.ucfirst(Transformer::pluralize($relatedEntity))}();
+					if(is_countable($slave) && count($slave)){
 						foreach ($entity->{'getSlave'.ucfirst(Transformer::pluralize($relatedEntity))}() as $key => $relatedItem) {
 							$notPersistedRelations[$relatedItem->getPrimaryKey()] = $relatedItem->getPrimaryKey();
 						}
