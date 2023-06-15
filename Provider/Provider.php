@@ -886,6 +886,10 @@ class Provider {
 				}
 			}
 
+			if (method_exists($entity, 'setProvider')) {
+				$entity->setProvider($this);
+			}
+
 			/// hydrate loggable
 			if(true === $this->isEntityLoggable($entityName)){
 				$entity->setChangelog(
