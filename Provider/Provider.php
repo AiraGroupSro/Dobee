@@ -827,7 +827,11 @@ class Provider {
 						$type = -1;
 					}
 
-					$clause .= Transformer::camelCaseToUnderscore($property)." ".$this->resolveOperation($operator);
+					if (strpos($property, '(')) {
+						$clause .= $property . " " . $this->resolveOperation($operator);
+					} else {
+						$clause .= Transformer::camelCaseToUnderscore($property) . " " . $this->resolveOperation($operator);
+					}
 					/// handle IN operator (that takes array as parameter)
 					$propertyStripped = Transformer::strip($property);
 					$entityStripped = Transformer::strip($property,false);
