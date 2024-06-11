@@ -808,6 +808,7 @@ class Provider {
 				}
 
 				$clause = "(";
+				$_values = $values;
 				foreach ($properties as $key => $property) {
 					if($clause !== "("){
 						$clause .= ' OR ';
@@ -816,6 +817,11 @@ class Provider {
 					$operator = count($operators) > 1 ? $operators[$key] : $operators[0];
 					if(false === is_array($settings['value'])){
 						$value = count($values) > 1 ? $values[$key] : $values[0];
+					}
+					if (isset($_values[$key]) && is_array($_values[$key])) {
+						$values = $_values[$key];
+					} else {
+						$values = $_values;
 					}
 					if(null !== $typesets){
 						$type = count($typesets) > 1 ? $typesets[$key] : $typesets[0];
