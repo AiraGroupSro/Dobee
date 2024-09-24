@@ -559,6 +559,7 @@ class Provider {
 			case '!~': case 'nin': return 'NOT IN (?)';
 			case '0': case 'null': return 'IS NULL';
 			case '!0': case 'nn': return 'IS NOT NULL';
+			case 'between': return 'BETWEEN ? AND ?';
 			default: throw new UnknownOperationException('Operator "'.$operator.'" is unknown!');
 		}
 	}
@@ -844,7 +845,12 @@ class Provider {
 					if($entityStripped === 'this'){
 						$entityStripped = $entityName;
 					}
-					if(true === in_array($operator, ['~','in','!~','nin']) && is_array($values)){
+					if($operator === 'between' && is_array($values)) {
+						$_type = null !== $type ? $type : $this->resolvePropertyStatementType($entityStripped,$propertyStripped);
+						array_push($types, $_type, $_type);
+						array_push($params, $values[0], $values[1]);
+					}
+					else if(true === in_array($operator, ['~','in','!~','nin']) && is_array($values)){
 						$clause = str_replace('IN (?)','IN('.(function() use ($values) {
 							$str = '';
 							for ($i=0; $i < count($values); $i++) {
