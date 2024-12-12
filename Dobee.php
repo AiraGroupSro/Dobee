@@ -17,6 +17,7 @@ class Dobee {
 	protected $generator;
 	protected $provider;
 	protected $entityPath;
+	protected $entityNamespace;
 
 	public function __construct($configurationFilePath,$entityPath,$entityNamespace){
 		/// set path to store entity scripts and their namespace
@@ -161,7 +162,7 @@ class Dobee {
 			$this->options['db']['user'],
 			($this->options['db']['password'] ? $this->options['db']['password'] : ini_get('mysqli.default_pw')),
 			$this->options['db']['database'],
-			($this->options['db']['port'] ? $this->options['db']['port'] : ini_get('mysqli.default_port'))
+			(int)($this->options['db']['port'] ? $this->options['db']['port'] : ini_get('mysqli.default_port'))
 		);
 		/// check connection
 		if($this->connection->connect_error){

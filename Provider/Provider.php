@@ -793,16 +793,16 @@ class Provider {
 					continue;
 				}
 				/// property group can be e.g. 'this.id' or 'this.id|this.active|this.title' where '|'' stands for logical OR
-				$properties = explode('|',$propertyGroup);
-				$operators = explode('|',$settings['operator']);
+				$properties = explode('|', (string) $propertyGroup);
+				$operators = explode('|', (string) $settings['operator']);
 				if(false === is_array($settings['value'])){
-					$values = explode('|',$settings['value']);
+					$values = explode('|', (string) $settings['value']);
 				}
 				else{
 					$values = $settings['value'];
 				}
 				if(isset($settings['type'])){
-					$typesets = explode('|',$settings['type']);
+					$typesets = explode('|', (string) $settings['type']);
 				}
 				else{
 					$typesets = null;
@@ -940,7 +940,7 @@ class Provider {
 			$relations = $this->getEntityRelations($entityName,false,true);
 			if(count($relations) > 0){
 				foreach ($relations as $relatedEntity => $cardinality) {
-					$pairs = explode(':',$relatedEntity);
+					$pairs = explode(':', (string) $relatedEntity);
 					$owningEntity = $pairs[0];
 					$relatedEntity = $pairs[1];
 					switch ($cardinality) {

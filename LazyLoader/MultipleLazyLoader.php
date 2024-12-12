@@ -11,6 +11,7 @@ class MultipleLazyLoader {
 	protected $entity;
 	protected $entityName;
 	protected $options;
+	protected $extras;
 
 	public function __construct(Provider $provider, $entity, $entityName, array $options, array $extras = null){
 		$this->provider = $provider;
